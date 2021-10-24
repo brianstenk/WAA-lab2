@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<div id="header">
+    <h2>List of cars</h2>
+</div>
+<table class="datatable" border="1">
+    <tr><th>Product Number</th><th>Name</th><th>Price</th></tr>
+    <tr th:each="product : ${productList}">
+        <td th:text="${product.number}">Product Number</td>
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.price}">Price</td>
+        <td>
+            <form action="removeProduct" method="post">
+                <button type="submit" name="number" th:value="${product.number}">Remove product</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+<form action="addProduct" method="post">
+    <button type="submit">Add Product</button>
+</form>
+
+</body>
+</html>
